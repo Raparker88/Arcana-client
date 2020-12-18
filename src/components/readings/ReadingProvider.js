@@ -23,11 +23,22 @@ export const ReadingProvider = (props) => {
                 setPositions(positionObj)
             })
     }
+    const addReading = reading => {
+        return fetch("http://localhost:8000/readings", {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(reading)
+        })
+            
+    }
 
     
     return (
         <ReadingContext.Provider value={{
-            positions, getPositionsByLayout
+            positions, getPositionsByLayout, addReading
         }}>
             {props.children}
         </ReadingContext.Provider>
