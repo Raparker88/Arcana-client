@@ -27,7 +27,7 @@ export const MakeReading = (props) => {
                     <div>
                         <button onClick={()=> {
                         getDeck()
-                        .then(() => console.log(deck))
+            
                         }}
                         className= "shuffle-btn" id="shuffle-button">
                             Shuffle Deck</button>
