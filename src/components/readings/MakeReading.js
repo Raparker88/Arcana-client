@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { CardContext } from './CardProvider'
 import { FiveCardCross } from './FiveCardCross'
 import "./Reading.css";
@@ -6,6 +6,7 @@ import "./Reading.css";
 
 export const MakeReading = (props) => {
     const { deck, getDeck } = useContext(CardContext)
+    const [deal, setDeal] = useState(false)
 
     useEffect(() => {
         getDeck()
@@ -13,7 +14,7 @@ export const MakeReading = (props) => {
     
     return (
         <>
-        <div className="layout-container">
+        <div className={deal?"layout-container": "layout-hidden"}>
             <FiveCardCross fiveCardArr={deck.slice(-5)}/>
         </div>
         <div className="deck-fill">
@@ -28,10 +29,13 @@ export const MakeReading = (props) => {
                         getDeck()
                         .then(() => console.log(deck))
                         }}
-                        className="shuffle-btn">Shuffle Deck</button>
+                        className= "shuffle-btn" id="shuffle-button">
+                            Shuffle Deck</button>
                     </div>
                     <div>
                         <button onClick={()=> {
+                            setDeal(true)
+                            document.getElementById("shuffle-button").disabled = true
                         }}
                         className="deal-btn">Deal</button>
                     </div>

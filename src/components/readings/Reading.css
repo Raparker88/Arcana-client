@@ -32,5 +32,8 @@
 .layout-container {
     width: 100%;
 }
+.layout-hidden {
+    display: none;
+}
 
 
