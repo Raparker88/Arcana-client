@@ -14,6 +14,11 @@
 .deck-img {
     width: 8em;
 }
+.deck-img-flipped{
+    width: 8em;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
 
 .five-card {
     width: 8em;
