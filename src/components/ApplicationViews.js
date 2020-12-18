@@ -4,6 +4,7 @@ import { UserProvider } from "./users/UserProvider"
 import { Card } from "./home/CardOfDay"
 import { CardProvider } from "./readings/CardProvider"
 import { MakeReading } from "./readings/MakeReading"
+import { ReadingProvider } from "./readings/ReadingProvider"
 
 
 export const ApplicationViews = () => {
@@ -12,8 +13,10 @@ export const ApplicationViews = () => {
             <Route exact path="/" render={props =>
                 <Card {...props} />} />
             <CardProvider>
-                <Route exact path="/reading" render={props =>
-                    <MakeReading {...props} />} />
+                <ReadingProvider>
+                    <Route exact path="/reading" render={props =>
+                        <MakeReading {...props} />} />    
+                </ReadingProvider>
             </CardProvider>
         </UserProvider>
         

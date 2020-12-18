@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CardContext } from './CardProvider'
+
 import { FiveCardCross } from './FiveCardCross'
 import "./Reading.css";
 
@@ -7,15 +8,24 @@ import "./Reading.css";
 export const MakeReading = (props) => {
     const { deck, getDeck } = useContext(CardContext)
     const [deal, setDeal] = useState(false)
+    const [fiveCardArr, setFive ] = useState([{},{},{},{},{}])
+
+    
 
     useEffect(() => {
         getDeck()
     }, [])
+
+    useEffect(() => {
+        if(deck.length > 0){
+            setFive(deck.slice(-5))
+        }
+    }, [deck])
     
     return (
         <>
         <div className={deal?"layout-container": "layout-hidden"}>
-            <FiveCardCross fiveCardArr={deck.slice(-5)}/>
+            <FiveCardCross fiveCardArr={fiveCardArr}/>
         </div>
         <div className="deck-fill">
             <div className="deck-container">
