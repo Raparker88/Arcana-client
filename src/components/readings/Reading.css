@@ -1,3 +1,44 @@
 .deck-container {
     display: flex;
+    width: fit-content;
+    margin: auto;
+    margin-bottom: 40px;
 }
+
+.deck-fill {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+.deck-img {
+    width: 8em;
+}
+.deck-img-flipped{
+    width: 8em;
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+}
+
+.five-card {
+    width: 8em;
+    margin: auto;
+}
+
+.five-card-middle {
+    display: flex;
+}
+
+.five-card-container {
+    width: fit-content;
+    margin: auto;
+}
+
+.layout-container {
+    width: 100%;
+}
+.layout-hidden {
+    display: none;
+}
+
+
