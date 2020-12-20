@@ -4,7 +4,7 @@ import { UserContext } from "../users/UserProvider"
 import "./Reading.css";
 
 
-export const ReadingList = () => {
+export const ReadingList = (props) => {
     const { getReadingsByUser, readings } = useContext(ReadingContext)
     const { currentUser, getCurrentUser } = useContext(UserContext)
 
