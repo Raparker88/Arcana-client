@@ -2,18 +2,26 @@ import React, { useContext, useEffect } from 'react'
 import { ReadingContext } from "./ReadingProvider"
 import { UserContext } from "../users/UserProvider"
 import "./Reading.css";
+import { useParams } from "react-router"
 
 
 export const ReadingList = (props) => {
-    const { getReadingsByUser, readings } = useContext(ReadingContext)
+    const { getReadingsByUser, readings, getSubscriptions } = useContext(ReadingContext)
     const { currentUser, getCurrentUser } = useContext(UserContext)
+
+    let {route}= useParams()
 
     useEffect(() => {
         getCurrentUser()
     },[]) 
     
     useEffect(() => {
-        getReadingsByUser(currentUser.id)
+        if(route="readings"){
+            getSubscriptions()
+        }else{
+            getReadingsByUser(currentUser.id)
+
+        }
     }, [currentUser])
 
     
