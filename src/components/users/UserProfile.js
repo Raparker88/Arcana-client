@@ -6,10 +6,11 @@ import "./User.css";
 export const UserProfile = (props) => {
     const { currentUser, getCurrentUser, patchProfile } = useContext(UserContext)
     const [base64, setBase64] = useState(null)
-
+    const [user, setUser] = useState({astrology:{}})
 
     useEffect(() => {
         getCurrentUser()
+        .then(setUser)
     },[])
     
     useEffect(() => {
@@ -36,22 +37,26 @@ export const UserProfile = (props) => {
         <>
         <div className="user-container">
             <div className="profileImg-container">
-                {currentUser.profile_image !=null? 
+                {user.profile_image !=null? 
                 <img className="profile-image"
-                src={currentUser.profile_image}></img>:
+                src={user.profile_image}></img>:
                 null}
+                {user.id === currentUser.id? 
+                <div>
                 <label htmlFor="profile_img">Change Profile Image</label>
                     <input type="file" id="profle_image" name="profile_img"
                         onChange={(evt) => {
                             createProfileImageJSON(evt)
-                    }} />
+                    }} /></div>
+                    :null
+                }
             </div>
             <div className="user-info">
                 <h2>Info</h2>
-                <h2>{currentUser.full_name}</h2>
-                <h2>Username: {currentUser.username}</h2>
-                <p>Bio: {currentUser.bio}</p>
-                <p>Astrological Sign: {currentUser.astrology.name}</p>
+                <h2>{user.full_name}</h2>
+                <h2>Username: {user.username}</h2>
+                <p>Bio: {user.bio}</p>
+                <p>Astrological Sign: {user.astrology.name}</p>
             </div>
 
         </div>

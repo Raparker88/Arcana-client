@@ -15,7 +15,10 @@ export const UserProvider = (props) => {
             }
         })
             .then(res => res.json())
-            .then(setCurrentUser)
+            .then((res) => {
+                setCurrentUser(res)
+                return res
+            })
     }
 
     const patchProfile = obj => {
