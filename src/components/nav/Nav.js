@@ -9,7 +9,7 @@ export const NavBar = (props) => {
                 <i className="fa fa-bars" aria-hidden="true"></i>
                 <div className="dropdown-content">
                         <Link className="nav-link" to="/">Home</Link>
-                        <Link className="nav-link" to="/">My Readings</Link>
+                        <Link className="nav-link" to="/my_readings">My Readings</Link>
                         <Link className="nav-link" to="/reading">Get A Reading</Link>
                         <div className="nav-link fakeLink"
                             onClick={() => {

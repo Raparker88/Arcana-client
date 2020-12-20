@@ -5,6 +5,8 @@ export const ReadingContext = React.createContext()
 export const ReadingProvider = (props) => {
 
     const [positions, setPositions] = useState({1:{}, 2:{}, 3:{}, 4:{}, 5:{}})
+    const [readings, setReadings] = useState([])
+    const [reading, setReading] = useState({})
     
 
     const getPositionsByLayout = (layoutId) => {
@@ -34,11 +36,33 @@ export const ReadingProvider = (props) => {
         })
             
     }
+    const getReadingsByUser = (userId) => {
+        return fetch(`http://localhost:8000/readings?tarotuser_id=${userId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(setReadings)
+    }
+
+    const getReadingById = (readingId) => {
+        return fetch(`http://localhost:8000/readings/${readingId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(setReading)
+    }
 
     
     return (
         <ReadingContext.Provider value={{
-            positions, getPositionsByLayout, addReading
+            positions, getPositionsByLayout, addReading, getReadingsByUser, readings,
+            getReadingById, reading
         }}>
             {props.children}
         </ReadingContext.Provider>
