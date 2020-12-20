@@ -36,9 +36,17 @@ export const ReadingDetails = (props) => {
 
     return (
         <>
+        <div className="reading-detail-container">
+            <div className="title-date">
+                <h2>{reading.name} {new Date(reading.date_created).toDateString()}</h2>
+            </div>
+            <div className="reading-notes">
+                {reading.notes}
+            </div>
             <div className="layout-container">
                 <FiveCardCross fiveCardArr={fiveCardArr} />
             </div>
+        </div>
 
         </>
     )
