@@ -10,6 +10,7 @@ export const Card = (props) => {
     useEffect(() => {
         getCurrentUser()
     }, [])
+
     useEffect(() => {
         setInverted(currentUser.card_of_day_inverted)
     },[currentUser])

@@ -5,21 +5,28 @@ import "./Reading.css";
 
 
 export const ReadingList = (props) => {
-    const { getReadingsByUser, readings } = useContext(ReadingContext)
+    const { getReadingsByUser, readings, getSubscriptions } = useContext(ReadingContext)
     const { currentUser, getCurrentUser } = useContext(UserContext)
+
+    let route= props.location.pathname
 
     useEffect(() => {
         getCurrentUser()
     },[]) 
     
     useEffect(() => {
-        getReadingsByUser(currentUser.id)
+        if(route === "/readings"){
+            getSubscriptions()
+        }else{
+            getReadingsByUser(currentUser.id)
+
+        }
     }, [currentUser])
 
     
     return (
         <>
-            <h2>My Readings</h2>
+            <h2>{route === "/readings"? "Readings": "My Readings"}</h2>
             {readings.map(reading => {
                 return <div key={reading.id} className="reading-list-detail" 
                 onClick={()=> props.history.push(`/readings/${reading.id}`)}>

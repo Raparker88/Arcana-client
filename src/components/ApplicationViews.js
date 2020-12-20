@@ -21,6 +21,8 @@ export const ApplicationViews = () => {
                         <MakeReading {...props} />} />
                     <Route exact path="/my_readings" render={props =>
                         <ReadingList {...props} />} />
+                    <Route exact path="/readings" render={props =>
+                        <ReadingList {...props} />} />
                      <Route path="/readings/:readingId(\d+)" render={props => 
                         <ReadingDetails {...props} />} />      
                 </ReadingProvider>
