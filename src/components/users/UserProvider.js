@@ -5,7 +5,7 @@ export const UserContext = React.createContext()
 export const UserProvider = (props) => {
 
     const [currentUser, setCurrentUser] = useState({astrology:{}, card_of_day:{}})
-    
+    const [users, setUsers] = useState([])
 
     const getCurrentUser = () => {
         return fetch("http://localhost:8000/users/current_user", {
@@ -20,6 +20,18 @@ export const UserProvider = (props) => {
                 return res
             })
     }
+
+    const searchUsers = (queryString) => {
+        return fetch(`http://localhost:8000/users?name=${queryString}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(setUsers)
+    }
+
 
     const patchProfile = obj => {
         return fetch(`http://localhost:8000/users`, {
@@ -36,7 +48,7 @@ export const UserProvider = (props) => {
     
     return (
         <UserContext.Provider value={{
-            currentUser, getCurrentUser, patchProfile
+            currentUser, getCurrentUser, patchProfile, searchUsers, users
         }}>
             {props.children}
         </UserContext.Provider>
