@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 import { ReadingContext } from './ReadingProvider'
 import { FiveCardCross } from './FiveCardCross'
+import { CommentList } from '../comments/CommentsList'
 import "./Reading.css";
 
 
@@ -45,6 +46,9 @@ export const ReadingDetails = (props) => {
             </div>
             <div className="layout-container">
                 <FiveCardCross fiveCardArr={fiveCardArr} />
+            </div>
+            <div className="comments-container">
+                <CommentList {...props}/>
             </div>
         </div>
 
