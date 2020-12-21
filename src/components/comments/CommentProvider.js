@@ -28,10 +28,28 @@ export const CommentProvider = (props) => {
         })
             
     }
+    const updateComment = comment => {
+        return fetch(`http://localhost:8000/comments/${comment.id}`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(comment)
+        })
+            
+    }
+
+    const deleteComment = commentId => {
+        return fetch(`http://localhost:8000/comments/${commentId}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Token ${localStorage.getItem("ar_token")}`},
+        })
+    }
 
     return (
         <CommentContext.Provider value={{
-            getCommentsByReading, addComment, comments
+            getCommentsByReading, addComment, comments, deleteComment, updateComment
         }}>
             {props.children}
         </CommentContext.Provider>
