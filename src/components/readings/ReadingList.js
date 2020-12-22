@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { ReadingContext } from "./ReadingProvider"
 import { UserContext } from "../users/UserProvider"
 import "./Reading.css";
+import { UserList } from '../users/UserList'
 
 
 export const ReadingList = (props) => {
@@ -34,6 +35,7 @@ export const ReadingList = (props) => {
                     <div>{new Date(reading.date_created).toDateString()}</div>
                 </div>
             })}
+            {route === "/readings"?  <UserList {...props} />: null}
         </>
     )
 }
