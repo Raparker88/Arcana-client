@@ -4,16 +4,26 @@ import "./User.css";
 
 
 export const UserProfile = (props) => {
-    const { currentUser, getCurrentUser, patchProfile } = useContext(UserContext)
+    const { currentUser, getCurrentUser, patchProfile, getUserById } = useContext(UserContext)
     const [base64, setBase64] = useState(null)
     const [user, setUser] = useState({ astrology: {} })
 
     const bio = useRef(null)
     const bioDialog = useRef(null)
 
+    const otherUser = props.match.params.hasOwnProperty("userId")
+
+
     useEffect(() => {
-        getCurrentUser()
+        if(otherUser){
+            getCurrentUser()
+            .then(() => getUserById(parseInt(props.match.params.userId)))
             .then(setUser)
+        }else{
+
+            getCurrentUser()
+                .then(setUser)
+        }
     }, [])
 
     useEffect(() => {
@@ -60,10 +70,12 @@ export const UserProfile = (props) => {
                     <h2>Username: {user.username}</h2>
                     <div className="bio-container">
                         <p>Bio: {user.bio}</p>
+                        {user.id === currentUser.id?
                         <button className="fa fa-edit"
                                 onClick={evt => {
                                     bioDialog.current.showModal()
-                                }}></button>
+                                }}></button>:null
+                        }
                     </div>
                     <p>Astrological Sign: {user.astrology.name}</p>
                 </div>

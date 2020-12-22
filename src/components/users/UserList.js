@@ -62,11 +62,12 @@ export const UserList = (props) => {
             <div className="user-list">
                 {users.map(user => {
                     return <div key={user.id}>
-                        <div>{user.username}</div>
+                        <div onClick={evt => props.history.push(`/users/${user.id}`)}>
+                            {user.username}</div>
                         <div>
                             {isSubscribed(user)}
                         </div>
-
+                        
                     </div>
                 })}
 

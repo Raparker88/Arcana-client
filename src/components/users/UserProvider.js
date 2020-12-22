@@ -20,6 +20,17 @@ export const UserProvider = (props) => {
                 return res
             })
     }
+    const getUserById = (userId) => {
+        return fetch(`http://localhost:8000/users/${userId}`, {
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(res => res.json())
+            .then(res => {
+                return res})
+    }
 
     const searchUsers = (queryString) => {
         return fetch(`http://localhost:8000/users?name=${queryString}`, {
@@ -69,7 +80,8 @@ export const UserProvider = (props) => {
     
     return (
         <UserContext.Provider value={{
-            currentUser, getCurrentUser, patchProfile, searchUsers, users, subscribeToUser, unSubscribeToUser
+            currentUser, getCurrentUser, patchProfile, searchUsers, users, subscribeToUser,
+             unSubscribeToUser, getUserById
         }}>
             {props.children}
         </UserContext.Provider>

@@ -32,6 +32,8 @@ export const ApplicationViews = () => {
             </CardProvider>
             <Route exact path="/my_profile" render={props =>
                 <UserProfile {...props} />} />
+            <Route path="/users/:userId(\d+)" render={props => 
+                <UserProfile {...props} />} />      
         </UserProvider>
         
     </>
