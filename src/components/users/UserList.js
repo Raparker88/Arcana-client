@@ -5,7 +5,7 @@ import "./User.css";
 
 export const UserList = (props) => {
     
-    const { searchUsers, users } = useContext(UserContext)
+    const { searchUsers, users, subscribeToUser, unSubscribeToUser } = useContext(UserContext)
 
     const search = useRef(null)
 
@@ -29,7 +29,20 @@ export const UserList = (props) => {
         </form>
         <div className="user-list">
             {users.map(user => {
-                return <div>{user.username}</div>
+                return 
+                <>
+                    <div>{user.username}</div>
+                    {user.subscribed? 
+                    <button onClick={evt => {
+                        subscribeToUser(user.id)
+                    }}
+                    className="subscribe-btn">Follow</button>
+                    :<button onClick={evt => {
+                        unSubscribeToUser(user.id)
+                    }}
+                    className="subscribe-btn">Unfollow</button>
+                    }
+                </>
             })}
         </div>
 

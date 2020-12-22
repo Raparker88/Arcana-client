@@ -44,11 +44,32 @@ export const UserProvider = (props) => {
         })
 
     }
+    const subscribeToUser = (userId) => {
+        return fetch(`http://localhost:8000/users/${userId}/subscription`, {
+            method: "POST",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+           
+    }
+
+    const unSubscribeToUser = (userId) => {
+        return fetch(`http://localhost:8000/users/${userId}/subscription`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+           
+    }
 
     
     return (
         <UserContext.Provider value={{
-            currentUser, getCurrentUser, patchProfile, searchUsers, users
+            currentUser, getCurrentUser, patchProfile, searchUsers, users, subscribeToUser, unSubscribeToUser
         }}>
             {props.children}
         </UserContext.Provider>
