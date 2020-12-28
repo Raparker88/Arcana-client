@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { UserContext } from "../users/UserProvider"
 import { ReadingContext } from "../readings/ReadingProvider"
 import "./User.css";
@@ -6,13 +6,18 @@ import "./User.css";
 
 export const UserList = (props) => {
 
-    const { searchUsers, users, subscribeToUser, unSubscribeToUser, currentUser, getCurrentUser } = useContext(UserContext)
+    const { searchUsers, users, subscribeToUser, unSubscribeToUser, currentUser,
+         getCurrentUser, searchTerms, setTerms } = useContext(UserContext)
     const { getSubscriptions } = useContext(ReadingContext)
-    const search = useRef(null)
 
     useEffect(() => {
         getCurrentUser()
     },[]) 
+
+    const handleControlledInputChange = (event) => {
+        let str = event.target.value
+        setTerms(str)
+    }
 
     const isSubscribed = (user) => {
         if(currentUser.id === user.id){
@@ -22,7 +27,7 @@ export const UserList = (props) => {
             return <button
                 onClick={evt => {
                     unSubscribeToUser(user.id)
-                        .then(() => searchUsers(search.current.value))
+                        .then(() => searchUsers(searchTerms))
                         .then(getSubscriptions)
                 }}
                 className="follow-btn">
@@ -32,7 +37,7 @@ export const UserList = (props) => {
             return <button
                 onClick={evt => {
                     subscribeToUser(user.id)
-                        .then(() => searchUsers(search.current.value))
+                        .then(() => searchUsers(searchTerms))
                         .then(getSubscriptions)
 
                 }}
@@ -47,14 +52,17 @@ export const UserList = (props) => {
             <form className="searchUser-form">
                 <fieldset>
                     <div className="form-group search-div">
-                        <input type="text" id="search" ref={search} required autoFocus className="form-control"
-                            placeholder="search users" />
+                        <input type="text" id="search" required autoFocus className="form-control"
+                            placeholder="search users" 
+                            defaultValue={searchTerms}
+                            onChange={handleControlledInputChange}
+                        />
                     </div>
                 </fieldset>
                 <button type="submit" id="save"
                     onClick={evt => {
                         evt.preventDefault()
-                        searchUsers(search.current.value)
+                        searchUsers(searchTerms)
                     }}
                     className="btn fa fa-search"></button>
 

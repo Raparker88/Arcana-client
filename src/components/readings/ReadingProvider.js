@@ -57,6 +57,16 @@ export const ReadingProvider = (props) => {
             .then(res => res.json())
             .then(setReading)
     }
+    const shareReading = (readingId) => {
+        return fetch(`http://localhost:8000/readings/${readingId}/share`, {
+            method: "PUT",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            }
+        })
+            .then(() => getReadingById(readingId))
+    }
 
     const getSubscriptions = () => {
         return fetch(`http://localhost:8000/users/subscriptions`, {
@@ -69,11 +79,30 @@ export const ReadingProvider = (props) => {
             .then(setReadings)
     }
 
+    const editReading = (readingObj) => {
+        return fetch(`http://localhost:8000/readings/${readingObj.id}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(readingObj)
+        })
+            .then(() => getReadingById(readingObj.id))
+    }
+
+    const deleteReading = readingId => {
+        return fetch(`http://localhost:8000/readings/${readingId}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Token ${localStorage.getItem("ar_token")}`},
+        })
+    }
+
     
     return (
         <ReadingContext.Provider value={{
             positions, getPositionsByLayout, addReading, getReadingsByUser, readings,
-            getReadingById, reading, getSubscriptions
+            getReadingById, reading, getSubscriptions, shareReading, editReading, deleteReading
         }}>
             {props.children}
         </ReadingContext.Provider>
