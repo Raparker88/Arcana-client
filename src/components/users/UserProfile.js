@@ -22,7 +22,7 @@ export const UserProfile = (props) => {
         }else{
 
             getCurrentUser()
-                .then(setUser)
+            .then(setUser)
         }
     }, [])
 

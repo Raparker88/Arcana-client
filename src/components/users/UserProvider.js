@@ -6,6 +6,7 @@ export const UserProvider = (props) => {
 
     const [currentUser, setCurrentUser] = useState({astrology:{}, card_of_day:{}})
     const [users, setUsers] = useState([])
+    const [searchTerms, setTerms] = useState("")
 
     const getCurrentUser = () => {
         return fetch("http://localhost:8000/users/current_user", {
@@ -81,7 +82,7 @@ export const UserProvider = (props) => {
     return (
         <UserContext.Provider value={{
             currentUser, getCurrentUser, patchProfile, searchUsers, users, subscribeToUser,
-             unSubscribeToUser, getUserById
+             unSubscribeToUser, getUserById, searchTerms, setTerms
         }}>
             {props.children}
         </UserContext.Provider>
