@@ -91,11 +91,18 @@ export const ReadingProvider = (props) => {
             .then(() => getReadingById(readingObj.id))
     }
 
+    const deleteReading = readingId => {
+        return fetch(`http://localhost:8000/readings/${readingId}`, {
+            method: "DELETE",
+            headers: {"Authorization": `Token ${localStorage.getItem("ar_token")}`},
+        })
+    }
+
     
     return (
         <ReadingContext.Provider value={{
             positions, getPositionsByLayout, addReading, getReadingsByUser, readings,
-            getReadingById, reading, getSubscriptions, shareReading, editReading
+            getReadingById, reading, getSubscriptions, shareReading, editReading, deleteReading
         }}>
             {props.children}
         </ReadingContext.Provider>

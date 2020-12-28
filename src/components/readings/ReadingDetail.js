@@ -7,7 +7,7 @@ import "./Reading.css";
 
 
 export const ReadingDetails = (props) => {
-    const { getReadingById, reading, shareReading, editReading } = useContext(ReadingContext)
+    const { getReadingById, reading, shareReading, editReading, deleteReading } = useContext(ReadingContext)
     const { currentUser, getCurrentUser } = useContext(UserContext)
     const [fiveCardArr, setFive] = useState([{}, {}, {}, {}, {}])
 
@@ -61,7 +61,8 @@ export const ReadingDetails = (props) => {
                                 className="fa fa-edit">
                             </button>
                             <button onClick={evt => {
-                                //delete reading
+                                deleteReading(reading.id)
+                                .then(props.history.push('/my_readings'))
                             }}
                                 className="fa fa-trash">
                             </button>
