@@ -9,7 +9,6 @@ export const UserList = (props) => {
     const { searchUsers, users, subscribeToUser, unSubscribeToUser, currentUser,
          getCurrentUser, searchTerms, setTerms } = useContext(UserContext)
     const { getSubscriptions } = useContext(ReadingContext)
-    // const [ searchParam, setSearchParam ] = useState ("")
 
     useEffect(() => {
         getCurrentUser()
@@ -55,6 +54,7 @@ export const UserList = (props) => {
                     <div className="form-group search-div">
                         <input type="text" id="search" required autoFocus className="form-control"
                             placeholder="search users" 
+                            defaultValue={searchTerms}
                             onChange={handleControlledInputChange}
                         />
                     </div>

@@ -79,11 +79,23 @@ export const ReadingProvider = (props) => {
             .then(setReadings)
     }
 
+    const editReading = (readingObj) => {
+        return fetch(`http://localhost:8000/readings/${readingObj.id}`, {
+            method: "PATCH",
+            headers: {
+                "Authorization": `Token ${localStorage.getItem("ar_token")}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(readingObj)
+        })
+            .then(() => getReadingById(readingObj.id))
+    }
+
     
     return (
         <ReadingContext.Provider value={{
             positions, getPositionsByLayout, addReading, getReadingsByUser, readings,
-            getReadingById, reading, getSubscriptions, shareReading
+            getReadingById, reading, getSubscriptions, shareReading, editReading
         }}>
             {props.children}
         </ReadingContext.Provider>
