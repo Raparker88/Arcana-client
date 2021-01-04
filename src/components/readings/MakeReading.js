@@ -48,7 +48,7 @@ export const MakeReading = (props) => {
                 <FiveCardCross fiveCardArr={fiveCardArr} />
             </div>
             <div className="deck-fill">
-                <div className="deck-container">
+                <div className={deal? "deck-left": "deck-container"}>
                     <div>
                         <img className="deck-img"
                             src="http://localhost:8000/media/cardimages/card_back.jpeg"></img>
@@ -66,17 +66,18 @@ export const MakeReading = (props) => {
                             <button onClick={() => {
                                 setDeal(true)
                                 document.getElementById("shuffle-button").disabled = true
+                                document.getElementById("deal-button").disabled = true
                             }}
-                                className="deal-btn">Deal</button>
+                                className="deal-btn" id="deal-button">Deal</button>
                         </div>
                     </div>
                 </div>
-                <div className="form-container">
-                    <form className="scheduleForm" id="seedScheduleForm">
+                <div className={deal? "form-container": "deck-left"}>
+                    <form className="note-form">
                         <h2>Notes</h2>
                         <fieldset>
                             <div className="form-group">
-                                <textarea type="text" id="notes" ref={notes} required autoFocus className="form-control"
+                                <textarea type="text" id="notes" ref={notes} required autoFocus className="form-control reading-notes"
                                     placeholder="write notes here" />
                             </div>
                         </fieldset>
@@ -102,14 +103,14 @@ export const MakeReading = (props) => {
                             onClick={evt => {
                                 saveReadingDialog.current.showModal()
                             }}
-                            className="reading-btn">
+                            className="reading-btn submitButton">
                             Save Reading
                         </button>
                     </form>
 
                 </div>
-
             </div>
+
         </>
     )
 }
