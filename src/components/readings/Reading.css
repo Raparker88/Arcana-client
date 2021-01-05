@@ -97,3 +97,31 @@ fieldset {
     background-color: rgb(141, 106, 17);
     color: white;
   }
+
+  .title{
+      text-align: center;
+  }
+
+  .reading-list-detail{
+      display: flex;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 10px;
+      padding: 15px;
+      width: 65%;
+      background: rgb(255, 255, 255, 0.3);
+  }
+  .readingList-detail-container{
+      width: 65%;
+  }
+  .reading-list-detail:hover{
+      cursor: pointer;
+  }
+
+  .reading-name{
+      margin-right: 15px;
+  }
+
+  .user-reading-container{
+      display: flex;
+  }
