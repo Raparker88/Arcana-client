@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./Nav.css"
+import logo from "./arcana_logo.png"
 
 export const NavBar = (props) => {
     return (
@@ -20,6 +21,9 @@ export const NavBar = (props) => {
                             }}
                         >Logout</div>
                 </div>
+            </div>
+            <div className="logo">
+                {/* <img src={logo} className="logo-img"></img> */}
             </div>
             </> 
             

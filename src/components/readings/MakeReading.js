@@ -42,6 +42,35 @@ export const MakeReading = (props) => {
         .then(() => props.history.push("my_readings"))
     }
 
+    const shuffleAnimation = () => {
+        const frame = () => {
+            if (pos == 60){
+                undoShuffle()
+                clearInterval(id)
+            }else{
+                pos++
+                elem.style.right=pos + "px"
+            }
+        }
+        const elem = document.getElementById("shuffle-card")
+        let pos = 0
+        let id = setInterval(frame, 1)
+    }
+
+    const undoShuffle = () => {
+        const frame = () => {
+            if (pos == 10){
+                clearInterval(id)
+            }else{
+                pos--
+                elem.style.right=pos + "px"
+            }
+        }
+        const elem = document.getElementById("shuffle-card")
+        let pos = 30
+        let id = setInterval(frame, 2)
+    }
+
     return (
         <>
             <div className={deal ? "layout-container" : "layout-hidden"}>
@@ -49,17 +78,26 @@ export const MakeReading = (props) => {
             </div>
             <div className="deck-fill">
                 <div className={deal? "deck-left": "deck-container"}>
-                    <div>
-                        <img className="deck-img"
-                            src="http://localhost:8000/media/cardimages/card_back.jpeg"></img>
+                    <div className="deckImg-container">
+                        <div className="deckImg-div-absolute" >
+                            <img className="deck-img"
+                                src="http://localhost:8000/media/cardimages/card_back.jpeg"></img>
+                        </div>
+                        <div className="deckImg-div" id="shuffle-card" >
+                            
+                            <img className="deck-img"
+                                src="http://localhost:8000/media/cardimages/card_back.jpeg"></img>
+                        </div>
+
                     </div>
                     <div className="deck-btn-container">
                         <div>
                             <button onClick={() => {
                                 getDeck()
+                                shuffleAnimation()
 
                             }}
-                                className="shuffle-btn" id="shuffle-button">
+                                className="shuffle-btn card-btn" id="shuffle-button">
                                 Shuffle Deck</button>
                         </div>
                         <div>
@@ -68,7 +106,7 @@ export const MakeReading = (props) => {
                                 document.getElementById("shuffle-button").disabled = true
                                 document.getElementById("deal-button").disabled = true
                             }}
-                                className="deal-btn" id="deal-button">Deal</button>
+                                className="deal-btn card-btn" id="deal-button">Deal</button>
                         </div>
                     </div>
                 </div>

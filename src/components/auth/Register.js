@@ -61,55 +61,59 @@ export const Register = (props) => {
 
     return (
         <main style={{ textAlign: "center" }}>
+            <div className="container--login">
+                <div className="login-div">
 
-            <dialog className="dialog dialog--password" ref={passwordDialog}>
-                <div>Passwords do not match</div>
-                <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
-            </dialog>
+                    <dialog className="dialog dialog--password" ref={passwordDialog}>
+                        <div>Passwords do not match</div>
+                        <button className="button--close" onClick={e => passwordDialog.current.close()}>Close</button>
+                    </dialog>
 
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
-                <fieldset>
-                    <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputEmail"> Email address </label>
-                    <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="inputPassword"> Password </label>
-                    <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Verify Password </label>
-                    <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="verifyPassword"> Bio </label>
-                    <textarea ref={bio} name="bio" className="form-control" placeholder="Let other gamers know a little bit about you..." />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="sign">Your Astrological Sign </label>
-                    <select defaultValue="" name="sign" ref={sign} id="signs" className="form-control" >
-                        {signs.map(s => (
-                            <option key={s.id} value={s.id}>{s.name}</option>
-                        ))}
-                    </select>    
-                </fieldset>
-                <fieldset style={{
-                    textAlign: "center"
-                }}>
-                    <button className="btn btn-1 btn-sep icon-send" type="submit">Register</button>
-                </fieldset>
-            </form>
-            <section className="link--register">
-                Already registered? <Link to="/login">Login</Link>
-            </section>
+                    <form className="form--login" onSubmit={handleRegister}>
+                        <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
+                        <fieldset>
+                            <label htmlFor="firstName"> First Name </label>
+                            <input ref={firstName} type="text" name="firstName" className="form-control" placeholder="First name" required autoFocus />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="lastName"> Last Name </label>
+                            <input ref={lastName} type="text" name="lastName" className="form-control" placeholder="Last name" required />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="inputEmail"> Email address </label>
+                            <input ref={email} type="email" name="email" className="form-control" placeholder="Email address" required />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="inputPassword"> Password </label>
+                            <input ref={password} type="password" name="password" className="form-control" placeholder="Password" required />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="verifyPassword"> Verify Password </label>
+                            <input ref={verifyPassword} type="password" name="verifyPassword" className="form-control" placeholder="Verify password" required />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="verifyPassword"> Bio </label>
+                            <textarea ref={bio} name="bio" className="form-control" placeholder="Let other users know a little bit about you..." />
+                        </fieldset>
+                        <fieldset>
+                            <label htmlFor="sign">Your Astrological Sign </label>
+                            <select defaultValue="" name="sign" ref={sign} id="signs" className="form-control" >
+                                {signs.map(s => (
+                                    <option key={s.id} value={s.id}>{s.name}</option>
+                                ))}
+                            </select>    
+                        </fieldset>
+                        <fieldset style={{
+                            textAlign: "center"
+                        }}>
+                            <button className="signIn-btn" type="submit">Register</button>
+                        </fieldset>
+                    </form>
+                    <section className="link--register">
+                        Already registered? <Link to="/login">Login</Link>
+                    </section>
+                </div>
+            </div>
         </main>
     )
 }
