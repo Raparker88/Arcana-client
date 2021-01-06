@@ -48,14 +48,14 @@ export const CommentList = (props) => {
             return (
                 <div className="commentButtonContainer">
                     <button
-                        className="btn-small fa fa-edit"
+                        className="btn-comment fa fa-edit"
                         onClick={() => {
                             setEditMode(true)
                             setComment(comment)
                             commentRef.current.value = comment.comment
                         }}></button>
                     <button
-                        className="btn-small fa fa-trash"
+                        className="btn-comment fa fa-trash"
                         onClick={() => {
                             deleteComment(comment.id)
                             .then(() => getCommentsByReading(readingId))
@@ -68,6 +68,7 @@ export const CommentList = (props) => {
 
     return (
         <>
+        <div className="comment-div">
             <h2>Comments</h2>
             <form className="comment-form" id="comment-form-id">
                 <fieldset>
@@ -86,12 +87,18 @@ export const CommentList = (props) => {
             </form>
             {comments.map(comment => {
                 return <div key={comment.id} className="comment-detail">
-                    <div>{comment.tarotuser && comment.tarotuser.username}</div>
-                    <div>{new Date(comment.date_created).toDateString()}</div>
-                    <div >{comment.comment}</div>
+                    <div>
+                        <div className="comment-top">
+                            <div className="comment-username">{comment.tarotuser && comment.tarotuser.username}</div>
+                            <div>{new Date(comment.date_created).toDateString()}</div>
+                        </div>
+                        <div >{comment.comment}</div>
+
+                    </div>
                     {editDeleteButtons(comment)}
                 </div>
             })}
+        </div>
         </>
     )
 }

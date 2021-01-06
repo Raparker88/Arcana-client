@@ -18,9 +18,10 @@ export const Card = (props) => {
 
     return (
         <>
+        <div className="home-container">
             <div className="card-container">
                 <h2>Your Card Of The Day</h2>
-                <div>
+                <div className="card-div">
                     <img className={inverted ? "card-img-flipped": "card-img"}
                      src={currentUser.card_of_day.card_image}></img>
                 </div>
@@ -34,6 +35,8 @@ export const Card = (props) => {
                 
                 }
             </div>
+
+        </div>
         </>
     )
 }

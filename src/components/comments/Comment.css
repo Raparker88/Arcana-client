@@ -1,0 +1,53 @@
+.comment-div{
+    width: 65%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.comment-top{
+    display: flex;
+}
+
+.comment-form{
+    display: flex;
+}
+
+.fa-plus {
+    height: 2em;
+    margin-top: 8px;
+}
+
+.fa-plus:hover {
+    cursor: pointer;
+}
+
+.comment-detail{
+    display: flex;
+    margin-bottom: 10px;
+    padding: 15px;
+    background: rgb(255, 255, 255, 0.2);
+}
+
+.comment-username{
+    margin-right: 10px;
+    color:black
+}
+
+.commentButtonContainer{
+    margin-left: auto;
+}
+
+.btn-comment{
+    border: 1px solid black;
+    background-color: none;
+    color:rgb(59, 59, 59);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    margin: 5px;
+}
+.btn-comment:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+    cursor: pointer;
+} 

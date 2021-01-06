@@ -30,6 +30,7 @@ export const UserProfile = (props) => {
         if (base64 != null) {
             patchProfile({ profile_image: base64 })
                 .then(getCurrentUser)
+                .then(setUser)
         }
     }, [base64])
 
@@ -53,7 +54,7 @@ export const UserProfile = (props) => {
                     {user.profile_image != null ?
                         <img className="profile-image"
                             src={user.profile_image}></img> :
-                        null}
+                        <div className="no-image"></div>}
                     {user.id === currentUser.id ?
                         <div>
                             <label htmlFor="profile_img">Change Profile Image</label>
@@ -65,17 +66,20 @@ export const UserProfile = (props) => {
                     }
                 </div>
                 <div className="user-info">
-                    <h2>Info</h2>
-                    <h2>{user.full_name}</h2>
-                    <h2>Username: {user.username}</h2>
-                    <div className="bio-container">
-                        <p>Bio: {user.bio}</p>
+                    <div className="profile-info-edit">
+                        <h2>Info</h2>
                         {user.id === currentUser.id?
-                        <button className="fa fa-edit"
+                        <button className="fa fa-edit profile-edit-btn"
                                 onClick={evt => {
                                     bioDialog.current.showModal()
                                 }}></button>:null
                         }
+                    </div>
+                    <h2>{user.full_name}</h2>
+                    <h2>Username: {user.username}</h2>
+                    <div className="bio-container">
+                        <p>Bio: {user.bio}</p>
+                        
                     </div>
                     <p>Astrological Sign: {user.astrology.name}</p>
                 </div>

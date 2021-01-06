@@ -1,0 +1,91 @@
+.form-button{
+    display: flex;
+}
+
+#save-icon {
+    position: absolute;
+    padding: 2px;
+    margin-left: 2px;
+    color: black
+}
+#save-icon:hover{
+    cursor: pointer;
+}
+#user-search{
+    text-align: center;
+}
+
+.searchUser-container{
+    display: flex;
+    flex-direction: column;
+}
+.userName-container{
+    display: flex;
+    margin: 10px;
+}
+
+.username{
+    margin-right: 10px;
+    margin-top: 5px
+}
+
+.username:hover{
+    cursor: pointer;
+}
+
+.follow-btn{
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border: none;
+    /* transition-duration: 0.6s; */
+    cursor: pointer;
+    padding: 10px;
+    font-size: 12px;
+}
+.follow-btn:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+    cursor: pointer;
+}
+
+.user-container{
+    display: flex;
+    width: 80%;
+    margin:auto;
+    margin-top: 50px;
+}
+
+.profile-info-edit{
+    display: flex;
+}
+
+
+.profile-edit-btn{
+    border: 1px solid black;
+    background-color: none;
+    color:rgb(59, 59, 59);
+    cursor: pointer;
+    padding: 5px;
+    font-size: 18px;
+    margin-left: 20px;
+    height: 30px;
+    margin-top: 20px;   
+}
+.profile-edit-btn:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+    cursor: pointer;
+} 
+
+.profile-image{
+    width: 20em;
+    border-radius: 50%;
+}
+
+.no-image{
+    width: 20em;
+    height: 20em;
+    background-color: darkgray;
+    border-radius: 50%;
+    margin-right: 20px;
+}

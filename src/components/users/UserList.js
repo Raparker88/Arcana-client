@@ -21,7 +21,7 @@ export const UserList = (props) => {
 
     const isSubscribed = (user) => {
         if(currentUser.id === user.id){
-            return <div>self</div>
+            return null
         }
         if (user.subscribed) {
             return <button
@@ -49,37 +49,52 @@ export const UserList = (props) => {
 
     return (
         <>
+        <div className="searchUser-container">
             <form className="searchUser-form">
-                <fieldset>
-                    <div className="form-group search-div">
-                        <input type="text" id="search" required autoFocus className="form-control"
-                            placeholder="search users" 
-                            defaultValue={searchTerms}
-                            onChange={handleControlledInputChange}
-                        />
-                    </div>
-                </fieldset>
-                <button type="submit" id="save"
-                    onClick={evt => {
-                        evt.preventDefault()
-                        searchUsers(searchTerms)
-                    }}
-                    className="btn fa fa-search"></button>
+                <div className="form-button">
+                    <fieldset>
+                    <i  id="save-icon"
+                        onClick={evt => {
+                            evt.preventDefault()
+                            searchUsers(searchTerms)
+                        }}
+                        className="btn fa fa-search"></i>
+                        <div className="form-group search-div">
+                            <input type="text" id="user-search" required autoFocus className="form-control"
+                                placeholder="search users" 
+                                defaultValue={searchTerms}
+                                onChange={handleControlledInputChange}
+                            />
+                        </div>
+                    </fieldset>
+                    {/* <button type="submit" id="save"
+                        onClick={evt => {
+                            evt.preventDefault()
+                            searchUsers(searchTerms)
+                        }}
+                        className="btn fa fa-search"></button> */}
+
+                </div>
 
             </form>
+
             <div className="user-list">
                 {users.map(user => {
                     return <div key={user.id}>
-                        <div onClick={evt => props.history.push(`/users/${user.id}`)}>
-                            {user.username}</div>
-                        <div>
-                            {isSubscribed(user)}
+                        <div className="userName-container">
+                            <div onClick={evt => props.history.push(`/users/${user.id}`)} className="username">
+                                {user.username}</div>
+                            <div>
+                                {isSubscribed(user)}
+                            </div>
+
                         </div>
                         
                     </div>
                 })}
 
             </div>
+        </div>
 
         </>
     )

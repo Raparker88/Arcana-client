@@ -47,29 +47,29 @@ export const ReadingDetails = (props) => {
                 <div className="title-date">
                     <h2>{reading.name} {new Date(reading.date_created).toDateString()}</h2>
                     {currentUser.id === reading.tarotuser_id ?
-                        <div>
+                        <div className="titleButtons">
                             <button onClick={evt => {
                                 shareReading(reading.id)
                             }}
-                                className="reading-btn">
+                                className="title-btn share-btn">
                                 {reading.shared ? "Unshare" : "Share"}
                             </button>
                             <button onClick={evt => {
                                 editReadingDialog.current.showModal()
 
                             }}
-                                className="fa fa-edit">
+                                className="title-btn fa fa-edit btn-comment">
                             </button>
                             <button onClick={evt => {
                                 deleteReading(reading.id)
                                 .then(props.history.push('/my_readings'))
                             }}
-                                className="fa fa-trash">
+                                className="title-btn fa fa-trash btn-comment">
                             </button>
                         </div> : null}
                 </div>
                 <div className="reading-notes">
-                    {reading.notes}
+                    notes: {reading.notes}
                 </div>
                 <div className="layout-container">
                     <FiveCardCross fiveCardArr={fiveCardArr} />

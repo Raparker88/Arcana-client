@@ -23,6 +23,8 @@
 .five-card {
     width: 8em;
     margin: auto;
+    padding: 10px;
+
 }
 
 .five-card-middle {
@@ -32,10 +34,12 @@
 .five-card-container {
     width: fit-content;
     margin: auto;
+    
 }
 
 .layout-container {
     width: 100%;
+    z-index: 1;
 }
 .layout-hidden {
     display: none;
@@ -45,9 +49,11 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 160px;
+    color: darkslategray;
+    width: 30%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
+    padding: 1em;
   }
 
 .five-card:hover .position-explanation {
@@ -55,3 +61,124 @@
 
 }
 
+.deck-left{
+   display: none;
+}
+
+fieldset {
+    border: none;
+}
+
+.form-container{
+    margin: 2em;
+    width: fit-content;
+}
+
+.reading-notes{
+    width: 300px;
+    height: 100px;
+}
+
+.note-form{
+    text-align: center;
+    width: fit-content;
+}
+
+.submitButton{
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border: none;
+    transition-duration: 0.6s;
+    cursor: pointer;
+    padding: 15px;
+    font-size: 16px;
+  }
+  .submitButton:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+  }
+
+  .title{
+      text-align: center;
+  }
+
+  .reading-list-detail{
+      display: flex;
+      text-align: center;
+      margin: auto;
+      margin-bottom: 10px;
+      padding: 15px;
+      width: 65%;
+      background: rgb(255, 255, 255, 0.3);
+  }
+  .readingList-detail-container{
+      width: 65%;
+  }
+  .reading-list-detail:hover{
+      cursor: pointer;
+  }
+
+  .reading-name{
+      margin-right: 15px;
+  }
+
+  .user-reading-container{
+      display: flex;
+  }
+
+  .title-date{
+      display: flex;
+      margin-left: 30px;
+  }
+
+  .title-btn{
+      margin-top: 15px;
+      margin-left: 10px;
+  }
+
+  .share-btn{
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border: none;
+    /* transition-duration: 0.6s; */
+    cursor: pointer;
+    padding: 10px;
+    font-size: 12px;
+}
+.share-btn:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+    cursor: pointer;
+}
+
+.reading-notes{
+    margin-left: 30px;
+}
+
+.deckImg-div-absolute{
+    position:absolute;
+}
+
+.deckImg-div{
+    position: relative;
+    right: 10px;
+}
+
+.card-btn{
+    background-color: rgb(59, 59, 59);
+    color: white;
+    border: none;
+    /* transition-duration: 0.6s; */
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px;
+}
+.card-btn:hover {
+    background-color: rgb(141, 106, 17);
+    color: white;
+    cursor: pointer;
+}
+
+
+ 
