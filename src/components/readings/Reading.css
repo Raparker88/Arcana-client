@@ -6,9 +6,8 @@
 }
 
 .deck-fill {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+    display: flex;
+    margin: auto;
 }
 
 .deck-img {
@@ -38,9 +37,10 @@
 }
 
 .layout-container {
-    width: 100%;
-    z-index: 1;
+    margin-left: 60px;
+        
 }
+
 .layout-hidden {
     display: none;
 }
@@ -72,6 +72,7 @@ fieldset {
 .form-container{
     margin: 2em;
     width: fit-content;
+    margin-top: auto;
 }
 
 .reading-notes{
@@ -178,6 +179,12 @@ fieldset {
     background-color: rgb(141, 106, 17);
     color: white;
     cursor: pointer;
+}
+
+.reading-main-container{
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
 }
 
 
