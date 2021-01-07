@@ -71,11 +71,14 @@ export const ReadingDetails = (props) => {
                 <div className="reading-notes">
                     notes: {reading.notes}
                 </div>
-                <div className="layout-container">
-                    <FiveCardCross fiveCardArr={fiveCardArr} />
-                </div>
-                <div className="comments-container">
-                    <CommentList {...props} />
+                <div className="detail-flex">
+                    <div className="layout-container">
+                        <FiveCardCross fiveCardArr={fiveCardArr} />
+                    </div>
+                    <div className="comments-container">
+                        <CommentList {...props} />
+                    </div>
+
                 </div>
                 <dialog className="dialog dialog--editReading" ref={editReadingDialog}>
                     <form>

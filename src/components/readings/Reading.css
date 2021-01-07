@@ -187,5 +187,8 @@ fieldset {
     flex-wrap: wrap;
 }
 
+.detail-flex {
+    display: flex;
+}
 
  
