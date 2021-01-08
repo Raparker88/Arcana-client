@@ -54,7 +54,7 @@ export const MakeReading = (props) => {
         }
         const elem = document.getElementById("shuffle-card")
         let pos = 0
-        let id = setInterval(frame, 1)
+        let id = setInterval(frame, 2)
     }
 
     const undoShuffle = () => {
@@ -68,11 +68,13 @@ export const MakeReading = (props) => {
         }
         const elem = document.getElementById("shuffle-card")
         let pos = 30
-        let id = setInterval(frame, 2)
+        let id = setInterval(frame, 1)
     }
 
     return (
         <>
+        <div className="reading-main-container">
+
             <div className={deal ? "layout-container" : "layout-hidden"}>
                 <FiveCardCross fiveCardArr={fiveCardArr} />
             </div>
@@ -148,6 +150,7 @@ export const MakeReading = (props) => {
 
                 </div>
             </div>
+        </div>
 
         </>
     )

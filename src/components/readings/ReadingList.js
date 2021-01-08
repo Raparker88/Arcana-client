@@ -27,17 +27,17 @@ export const ReadingList = (props) => {
     
     return (
         <>
-            <h2 className="title">{route === "/readings"? "Readings": "My Readings"}</h2>
             <div className="user-reading-container">
                 <div className="readingList-detail-container">
+                    <h2 className="title">{route === "/readings"? "Readings": "My Readings"}</h2>
                     {readings.map(reading => {
                         return <div key={reading.id} className="reading-list-detail" 
                         onClick={()=> props.history.push(`/readings/${reading.id}`)}>
+                            <div className="reading-username">{reading.tarotuser && reading.tarotuser.username}</div>
                             <div className="reading-name">{reading.name}</div>
                             <div>•  {new Date(reading.date_created).toDateString()}</div>
                         </div>
                     })}
-
                 </div>
                 {route === "/readings"?  <UserList {...props} />: null}
             </div>
